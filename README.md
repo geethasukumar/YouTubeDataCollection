@@ -27,10 +27,10 @@ This project aims to develop a user-friendly Streamlit application that utilizes
 
 ## Results
 ![Project output](YouTube_App.PNG)
-![Data output](Search_YT.png)
-![Data output](YT_Data.png)
-![Data output](MongoDB-DW.png)
-![Data output](Reports.png)
+![Data output](Search_YT.PNG)
+![Data output](YT_Data.PNG)
+![Data output](MongoDB-DW.PNG)
+![Data output](Reports.PNG)
 
 ## Contact
 Geetha Sukumar
