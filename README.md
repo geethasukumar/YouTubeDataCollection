@@ -26,11 +26,11 @@ This project aims to develop a user-friendly Streamlit application that utilizes
     streamlit run youtube_Data_collection.py
 
 ## Results
-![Project output](YouTube_App.PNG)
-![Data output](Search_YT.PNG)
-![Data output](YT_Data.PNG)
-![Data output](MongoDB-DW.PNG)
-![Data output](Reports.PNG)
+![Project output](Images/YouTube_App.PNG)
+![Data output](Images/Search_YT.PNG)
+![Data output](Images/YT_Data.PNG)
+![Data output](Images/MongoDB-DW.PNG)
+![Data output](Images/Reports.PNG)
 
 ## Contact
 Geetha Sukumar
