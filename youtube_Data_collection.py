@@ -421,45 +421,43 @@ def main():
     if "dc" not in st.session_state:
             st.session_state.dc = None
             st.session_state.json_channel_info = None
-    
-    col1, col2 = st.sidebar.columns([1,1])
-    with col1:
-    
-        if st.sidebar.button("Search YouTube"):
-             with st.spinner():
-                # Create object for class youtube_data for the channel id selected
-                if youtube_id.strip() != '':
-                    dc = youtube_data(youtube_id)
-                    
-                    ####get channel information from youtube
 
-                    dc.get_channel_info()
-               
-                    # get playlists info
-                    pl_items = dc.get_playlists()
-                    dc.chnl_info['Playlists'] = pl_items
-                    json_channel_info = {}
-                    json_channel_info['last_updated']=datetime.now()
-                    json_channel_info['Channel'] = dc.chnl_info
+    
+    if st.sidebar.button("Search YouTube"):
+         with st.spinner():
+            # Create object for class youtube_data for the channel id selected
+            if youtube_id.strip() != '':
+                dc = youtube_data(youtube_id)
+                
+                ####get channel information from youtube
 
-                    st.session_state.dc = dc
-                       
-                    st.write(pd.DataFrame.from_dict(json_channel_info))
-                    
-                    st.session_state.json_channel_info = json_channel_info
-                else:
-                    st.write('Please enter a YouTube Channel Id to fetch Channel info.')
-    with col2:        
-        if st.sidebar.button("Save in MongoDB"):
-            if "dc" in st.session_state:
-                dc = st.session_state.dc
-                with st.spinner():        
-                    # Store the Channel data to Mongo DB
-                    dc.mongo_db_save_yt_data(st.session_state.json_channel_info)
-            
+                dc.get_channel_info()
+           
+                # get playlists info
+                pl_items = dc.get_playlists()
+                dc.chnl_info['Playlists'] = pl_items
+                json_channel_info = {}
+                json_channel_info['last_updated']=datetime.now()
+                json_channel_info['Channel'] = dc.chnl_info
+
+                st.session_state.dc = dc
                    
+                st.write(pd.DataFrame.from_dict(json_channel_info))
+                
+                st.session_state.json_channel_info = json_channel_info
             else:
-                st.write("Search for a Youtube Channel Id to save")
+                st.write('Please enter a YouTube Channel Id to fetch Channel info.')
+      
+    if st.sidebar.button("Save in MongoDB"):
+        if "dc" in st.session_state:
+            dc = st.session_state.dc
+            with st.spinner():        
+                # Store the Channel data to Mongo DB
+                dc.mongo_db_save_yt_data(st.session_state.json_channel_info)
+        
+               
+        else:
+            st.write("Search for a Youtube Channel Id to save")
 
 
     # Create object for class youtube_data for the channel id selected
@@ -504,11 +502,3 @@ def main():
 
 ## Calling the main program
 main()
-
-
-
-
-#dc = youtube_data('UCplOt4CRFxkKIVKE2_Xd3-w')  # Twinkling Twin Sisters
-#dc = youtube_data('UCduIoIMfD8tT3KoU0-zBRgQ') # Guvi Sharing
-#UCNwcxhfBVDgwx9Lv3CBpu6A # LMES
-
